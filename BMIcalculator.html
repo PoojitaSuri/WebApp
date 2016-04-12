@@ -1,0 +1,78 @@
+<html>
+<title>
+BMI CALCULATOR
+</title>
+<head>
+<style>
+body {
+     background-color: #E6E6F00;
+}
+div {
+    border-radius: 25px;
+    background: #73AD21;
+    padding: 20px; 
+    width: 400px;
+    height: 500px;    
+}
+</style>
+<body bgcolor="#000000">
+<script>
+function calculate()
+{
+ w=document.bmi_form.w.value;
+ h1=document.bmi_form.h1.value;
+ h2=document.bmi_form.h2.value;
+ 
+ h1 = h1 * 12.00;
+ h2 = +h1 + +h2;
+ h = (h2 * 2.54)/100.00;
+ 
+ bmi = w/(h*h);
+
+document.getElementById("result").innerHTML = Math.round(bmi*100)/100;
+ 
+  
+ if(bmi <= 18.5)
+ {document.getElementById("comment").innerHTML = "(Underweight)";}
+ else if(bmi <= 24.9 && bmi > 18.5)
+ {document.getElementById("comment").innerHTML = "(Normal weight)";}
+ else if(bmi <= 29.9 && bmi >= 25)
+ {document.getElementById("comment").innerHTML = "(Overweight)";}
+ else if(bmi >= 30)
+ {document.getElementById("comment").innerHTML = "(Obese)";}
+} 
+</script>
+</head>
+
+<body>
+    <br>
+	<br>
+	<br>
+	
+	 <center>
+	 <div>
+	<h1>Body Mass Index Calculator</h1>
+	<h3> Please enter the following details: </h3>
+	<form name="bmi_form" onsubmit="return calculate();">
+	<h3> Weight (in kg) </h3>
+	<input type="text" name="w" autocomplete="off">
+	<h3> Height</h3>
+	
+	<h3 style="text-align:left;">
+		Feet: <input type="text" name="h1" autocomplete="off">
+		<span style="float:right;"> Inch: <input type="text" name="h2" autocomplete="off"></span>
+	</h3>
+	<br>
+	<br>
+	</form>
+
+	<input type="submit" value="Calculate BMI!" onclick="calculate()">
+
+	<p>Your BMI is: </p>
+	<p id="result"></p> 
+	<p id="comment"></p> 
+	</div>
+	</center>
+
+</body>
+</html>
